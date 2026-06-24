@@ -1,0 +1,21 @@
+[project]
+name = "tiendauv"
+version = "1.0.0"
+requires-python = ">=3.12"
+
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "sqlalchemy",
+    "psycopg2-binary",
+    "httpx"
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-cov",
+    "testcontainers[postgres]",
+    "playwright",
+    "pytest-playwright"
+]
