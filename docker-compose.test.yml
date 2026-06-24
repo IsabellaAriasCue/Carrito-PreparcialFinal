@@ -1,0 +1,23 @@
+services:
+
+  db-test:
+    image: postgres:16-alpine
+
+    environment:
+      POSTGRES_DB: carrito
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    tmpfs:
+      - /var/lib/postgresql/data
+
+  api-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+
+    depends_on:
+      - db-test
+
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db-test:5432/carrito
