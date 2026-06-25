@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi import Depends
+from src.database.models import Base
+from src.database.config import engine
 
 from sqlalchemy.orm import Session
 
@@ -9,7 +11,7 @@ from src.database.config import get_db
 from src.database.repositorio import CarritoRepositorio
 
 app = FastAPI()
-
+Base.metadata.create_all(bind=engine)
 
 class ProductoInput(BaseModel):
     nombre: str

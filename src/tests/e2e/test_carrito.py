@@ -28,6 +28,6 @@ def test_agregar_producto(page: Page):
         page.get_by_test_id(
             "total-carrito"
         )
-    ).to_contain_text(
+    ).to_have_text(
         "1.500.000"
     )
